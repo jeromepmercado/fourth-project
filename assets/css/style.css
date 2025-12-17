@@ -1,0 +1,82 @@
+/* navbar css */
+.navbar-custom {
+    backdrop-filter: blur(5px) brightness(70%);
+    /* padding: 10px 15px; */
+}
+
+.nav-link {
+    color: #ffffff !important;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 25px;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* about section css */
+.about-section .aboutTitle {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-weight: 800;
+    font-size: clamp(20px, 8vw, 30px);
+}
+
+.about-section h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(5px, 4vw, 15px);
+    color: white;
+
+}
+
+.ic-video video {
+    width: 90%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 10px;
+    display: block;
+    object-fit: contain;
+}
+
+.ic-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+/*characters section css */
+.charac-title {
+    font-family: 'Afacad', sans-serif;
+    font-weight: 800;
+    font-size: clamp(35px, 8vw, 50px);
+    color: white;
+}
+
+/* footer */
+.footer {
+    background: #000000;
+    text-align: center;
+    padding: 8px;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer .credits {
+    font-size: 10px;
+    color: #838282;
+}
