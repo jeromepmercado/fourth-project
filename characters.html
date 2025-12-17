@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Demon Slayer</title>
+    <title>Dragon Ball</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
     <div class="container pt-2 position-sticky top-0 z-1">
         <nav class="navbar px-3 py-1 rounded-5 navbar-expand-lg navbar-custom d-flex justify-content-between">
             <a class="navbar-brand" href="#home">
-                <img src="assets/images/dsLogo.png" alt="Demon Slayer Logo" width="60" height="60">
+                <img src="assets/images/dbLogo.png" alt="Dragon Ball Logo" width="120" height="60">
             </a>
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
                 aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,71 +103,6 @@
 
 
     <!-- javascript-->
-    <script>
-        const colors = {
-            Human: "#1a00c6",
-            Demon: "#c60000"
-        };
-
-        var contents = document.getElementById("charactersArea");
-        var pageText = document.getElementById("pageText");
-        var page = 1;
-        var characters = []; 
-
-        function nextPage() {
-            page++;
-            contents.innerHTML = "";
-            pageText.innerHTML = "Page " + page;
-            showCharacters();
-        }
-
-        function prevPage() {
-            if (page > 1) {
-                page--;
-                contents.innerHTML = "";
-                pageText.innerHTML = "Page " + page;
-                showCharacters();
-            }
-        }
-
-        const getCharacters = async () => {
-            const response = await fetch(
-                "https://www.demonslayer-api.com/api/v1/characters?limit=45"
-            );
-            const data = await response.json();
-            characters = data.content;
-            showCharacters();
-        };
-
-        const showCharacters = () => {
-            for (var i = (page * 10) - 9; i <= page * 10; i++) {
-
-                const character = characters[i - 1];
-                const raceColor = colors[character.race] || "#555";
-
-                contents.innerHTML += `
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card my-3 shadow rounded-4 bg-dark text-white">
-            <img src="${character.image}"
-                 class="card-img-top"
-                 style="height:300px; object-fit:cover">
-
-            <div class="card-body text-center">
-              <h5 class="card-title">${character.name}</h5>
-
-              <div class="rounded-pill py-1 px-3 mt-2"
-                   style="background-color:${raceColor}">
-                ${character.race}
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-            }
-        };
-
-        getCharacters();
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
