@@ -33,7 +33,7 @@
             margin-top: -20px;
         }
 
-        /* Dark and blur overlay */
+        /* Dark overlay */
         .hero::before {
             content: "";
             position: absolute;
@@ -42,7 +42,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.25);
-            /* backdrop-filter: blur(1px); */
         }
 
         .hero-content {
@@ -57,6 +56,7 @@
             font-family: 'Afacad', sans-serif;
             font-weight: 800;
             font-size: clamp(35px, 8vw, 60px);
+            color: gold;
             display: flex;
             justify-content: center;
         }
@@ -79,6 +79,34 @@
             background: #2900ae;
             color: #111;
         }
+
+        .explore a {
+            font-family: 'Afacad', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .fact-card {
+            border: 2px solid #2900ae;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px #ffd700;
+        }
+
+        #facts p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: #d7d7d7;
+        }
+
+        #facts h4 {
+            font-family: 'Afacad', sans-serif;
+        }
+    </style>
     </style>
 </head>
 
@@ -126,7 +154,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 mt-3 text-center pt-2">
+                        <div class="col-12 mt-3 pt-2 text-center explore">
                             <a id="nextPageBtn" href="characters.html" class="btn btn-outline text-light">EXPLORE
                                 CHARACTERS</a>
                         </div>
@@ -136,14 +164,15 @@
             </div>
         </div>
     </div>
+    
     <!-- about section -->
     <div id="about" class="container-fluid about-section">
         <div class="row">
             <div class="col mt-5 mb-2 mx-2 text-center">
                 <h1 class="aboutTitle">THE RISE OF DRAGON BALL</h1>
                 <h5 class="mx-4 my-5">Enter a universe where strength knows no bounds. Dragon Ball follows Goku, a
-                    Saiyan raised on Earth,
-                    as he trains, fights, and grows alongside friends like Vegeta, Piccolo, and Gohan.
+                    Saiyan raised on Earth, as he trains, fights, and grows alongside friends like Vegeta, Piccolo, and
+                    Gohan.
 
                     Together, they face powerful foes, unlock new transformations, and chase the legendary Dragon Balls.
                     Dragon Ball is a story of courage, friendship, and the relentless pursuit of greatness—a saga of
@@ -159,6 +188,40 @@
         </div>
     </div>
 
+    <!-- What You Should Know Section -->
+    <div id="facts" class="container py-5 text-center">
+        <h2 class="mb-5" style="color: gold; font-family: 'Afacad', sans-serif; font-weight: 700;">What You Should Know
+            About Dragon Ball</h2>
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card bg-dark text-light h-100 p-3 fact-card">
+                    <h4 style="color: #ffd700;">Dragon Balls</h4>
+                    <p>Seven magical orbs that grant a wish when gathered. Heroes and villains alike seek their power.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card bg-dark text-light h-100 p-3 fact-card">
+                    <h4 style="color: #ffd700;">Saiyans</h4>
+                    <p>A warrior race known for incredible strength and the ability to transform into Super Saiyans.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card bg-dark text-light h-100 p-3 fact-card">
+                    <h4 style="color: #ffd700;">Transformations</h4>
+                    <p>Fighters unlock higher power levels with forms like Super Saiyan, Super Saiyan Blue, and Ultra
+                        Instinct.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card bg-dark text-light h-100 p-3 fact-card">
+                    <h4 style="color: #ffd700;">Key Characters</h4>
+                    <p>Goku, Vegeta, Piccolo, and Gohan shape the story with growth, rivalry, and legendary feats.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- footer -->
     <div class="footer mt-2 p-3">
         <div class="row">

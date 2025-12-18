@@ -34,10 +34,14 @@
 
 <body>
 
+    <div class="container-fluid m-0 p-0">
+        <div style="background-color: rgb(182, 176, 0); height: 3px; width: 0%;" id="loadingBar"></div>
+    </div>
+
     <!-- navbar -->
     <div class="container pt-2 position-sticky top-0 z-1">
         <nav class="navbar px-3 py-1 rounded-5 navbar-expand-lg navbar-custom d-flex justify-content-between">
-            <a class="navbar-brand" href="#home">
+            <a class="navbar-brand" href="index.html">
                 <img src="assets/images/dbLogo.png" alt="Dragon Ball Logo" width="120" height="60">
             </a>
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
@@ -65,7 +69,7 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-12 text-center">
-                <h1 class="charac-title ext-light">CHARACTERS</h1>
+                <h1 class="charac-title ext-light">LEGENDARY HEROES AND VILLAINS OF DRAGON BALL UNIVERSE</h1>
             </div>
         </div>
         <div class="row">
@@ -76,6 +80,13 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col">
+                <div class="row" id="charactersArea">
+
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <nav aria-label="Page navigation example">
@@ -94,15 +105,82 @@
                 </nav>
             </div>
         </div>
-
-        <div class="row" id="charactersArea">
-
-        </div>
     </div>
 
-
-
     <!-- javascript-->
+
+    <script>
+        const dbzRaceColors = {
+            saiyan: "#FFD700",        
+            namekian: "#4CAF50",      
+            human: "#2196F3",         
+            majin: "#FF69B4",         
+            friezaRace: "#DCDCDC",    
+            android: "#C0C0C0",       
+            god: "#FF4500",           
+            angel: "#E6E6FA",         
+            Unknown: "#9E9E9E",      
+            JirenRace: "#B71C1C"           
+
+        };
+
+        var contents = document.getElementById("charactersArea");
+        var pageText = document.getElementById("pageText");
+        var loadingBar = document.getElementById("loadingBar");
+        var page = 1;
+
+        function nextPage() {
+            page++;
+            contents.innerHTML = "";
+            pageText.innerHTML = "Page " + page;
+            showCharacters();
+        }
+
+        function prevPage() {
+            if (page === 1) return; // stop at page 1
+
+            page--;
+            contents.innerHTML = "";
+            pageText.innerHTML = "Page " + page;
+            showCharacters();
+        }
+
+        const showCharacters = async () => {
+            var loader = 0;
+            for (var i = (page * 10) - 9; i <= page * 10; i++) {
+                const response = await fetch('https://dragonball-api.com/api/characters/' + i);
+                const char = await response.json();
+                const imgSrc = char?.image || 'https://via.placeholder.com/300x350?text=No+Image';
+                const charName = char?.name || 'Unknown';
+                const charRace = char?.race || 'Unknown';
+
+                loader += 10;
+                loadingBar.style.width = loader + "%";
+                const raceColor = dbzRaceColors[charRace.toLowerCase()] || "#FFFFFF";
+
+                contents.innerHTML += `
+                <div class="col-12 col-md-6 mb-4 d-flex justify-content-center">
+                    <div class="card characCard" style="--race-color: ${raceColor};">
+                        <div class="row g-0 h-100">
+                            <div class="col-4">
+                                <div class="image-wrapper">
+                                    <img src="${imgSrc}" alt="${charName}" class="character-img">
+                                </div>
+                            </div>
+                            <div class="col-8 d-flex justify-content-center align-items-center">
+                                <div class="text-area text-center">
+                                    <h5 class="card-title">${charName}</h5>
+                                    <p class="card-text">Race: ${charRace}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }
+        }
+
+        showCharacters();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
